@@ -3,6 +3,7 @@ module com.example.todolist {
 //    requires javafx.swing;
     requires javafx.fxml;
     requires javafx.web;
+    requires java.sql;
 
     requires org.controlsfx.controls;
     requires net.synedra.validatorfx;
