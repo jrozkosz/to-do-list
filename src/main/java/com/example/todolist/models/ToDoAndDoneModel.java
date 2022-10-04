@@ -1,26 +1,21 @@
 package com.example.todolist.models;
 
-import com.example.todolist.controllers.Task;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 
 import java.sql.*;
 import java.time.LocalDate;
-import java.util.Map;
-import java.util.TreeMap;
 
 public class ToDoAndDoneModel {
-    //    private final ObservableList<Task> toDoList;
-//    private final ObservableList<Task> doneList;
     private final MyObservableList toDoList;
     private final MyObservableList doneList;
+    private User user;
     private Connection connection;
     private boolean afterLoadingData = false;
 
-    public ToDoAndDoneModel() throws SQLException {
-//        toDoList = FXCollections.observableArrayList();
-//        doneList = FXCollections.observableArrayList();
+    public ToDoAndDoneModel(User user) throws SQLException {
+        this.user = user;
         connection = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/to_do_app", "root", "mysqlrozki01");
         toDoList = new MyObservableList(connection,  true);
@@ -28,14 +23,19 @@ public class ToDoAndDoneModel {
 
         // pobrac z bazy dane i wstawic do list //
         try {
-            Statement statement = connection.createStatement();
-            ResultSet rsToDo = statement.executeQuery("select description, deadline from tasks_to_do");
+            PreparedStatement prepStatToDo = connection.prepareStatement(
+                    "select description, deadline from tasks_to_do where user_id = ?");
+            prepStatToDo.setInt(1, user.getUserId());
+            ResultSet rsToDo = prepStatToDo.executeQuery();
             while (rsToDo.next()) {
                 toDoList.getMyList().add(new Task(
                         rsToDo.getString("description"),
                         rsToDo.getDate("deadline").toLocalDate()));
             }
-            ResultSet rsDone = statement.executeQuery("select description, deadline from tasks_done");
+            PreparedStatement prepStatDone = connection.prepareStatement(
+                    "select description, deadline from tasks_done where user_id = ?");
+            prepStatDone.setInt(1, user.getUserId());
+            ResultSet rsDone = prepStatToDo.executeQuery();
             while (rsDone.next()) {
                 doneList.getMyList().add(new Task(
                         rsDone.getString("description"),
@@ -62,6 +62,7 @@ public class ToDoAndDoneModel {
         toDoList.getMyList().add(new Task(description, deadline));
     }
 
+
     public class MyObservableList {
         private final ObservableList<Task> myList = FXCollections.observableArrayList();
         private boolean toDoTable;
@@ -84,7 +85,7 @@ public class ToDoAndDoneModel {
                                         prepStatToDo = connection.prepareStatement(
                                                 "delete from tasks_done where user_id = ? and description = ? and deadline = ?");
                                     }
-                                    prepStatToDo.setInt(1, 2);
+                                    prepStatToDo.setInt(1, user.getUserId());
                                     prepStatToDo.setString(2, removedTask.getDescription());
                                     prepStatToDo.setDate(3, Date.valueOf(removedTask.getDeadline()));
                                     prepStatToDo.execute();
@@ -108,7 +109,7 @@ public class ToDoAndDoneModel {
                                     }
                                     prepStatDone.setString(1, addedTask.getDescription());
                                     prepStatDone.setDate(2, Date.valueOf(addedTask.getDeadline()));
-                                    prepStatDone.setInt(3, 2);
+                                    prepStatDone.setInt(3, user.getUserId());
                                     prepStatDone.execute();
                                 } catch (SQLException ex) {
                                     System.out.println("Adding task to db after change failed");

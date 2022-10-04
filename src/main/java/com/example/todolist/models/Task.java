@@ -1,4 +1,4 @@
-package com.example.todolist.controllers;
+package com.example.todolist.models;
 
 import java.sql.Date;
 import java.time.LocalDate;

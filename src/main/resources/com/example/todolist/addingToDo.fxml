@@ -18,17 +18,27 @@
             <Font name="System Bold Italic" size="15.0" />
          </font>
       </Label>
+      <Label fx:id="textNotEmpty" textFill="#e80202">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
       <TextArea fx:id="textInput" prefHeight="136.0" prefWidth="400.0" promptText="Type something..." wrapText="true">
          <VBox.margin>
-            <Insets left="50.0" right="50.0" />
+            <Insets bottom="5.0" left="50.0" right="50.0" top="5.0" />
          </VBox.margin>
          <font>
             <Font size="15.0" />
          </font>
       </TextArea>
+      <Label fx:id="pickDateFirst" textFill="#e80202">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
       <DatePicker fx:id="chosenDeadline" prefHeight="34.0" prefWidth="300.0" promptText="Pick a deadline...">
          <VBox.margin>
-            <Insets bottom="20.0" top="10.0" />
+            <Insets bottom="20.0" top="2.0" />
          </VBox.margin>
       </DatePicker>
       <Button fx:id="addButton" mnemonicParsing="false" onAction="#onAddButtonClick" prefHeight="30.0" prefWidth="68.0" text="Add!" />

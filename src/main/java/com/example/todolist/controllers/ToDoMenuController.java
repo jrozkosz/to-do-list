@@ -1,12 +1,11 @@
 package com.example.todolist;
 
-import com.example.todolist.controllers.Task;
+import com.example.todolist.models.Task;
 import com.example.todolist.models.ToDoAndDoneModel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -15,28 +14,18 @@ import javafx.scene.input.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.Date;
-import java.sql.SQLException;
-import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class ToDoMenuController implements Initializable {
+public class ToDoMenuController {
     @FXML
     private ListView<Task> toDoListView;
     @FXML
     private ListView<Task> doneListView;
     private ToDoAndDoneModel dataModel;
-    private Parent root;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            dataModel = new ToDoAndDoneModel();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
+    public void displayAllTasks(ToDoAndDoneModel dataModel){
+        this.dataModel = dataModel;
         toDoListView.setItems(dataModel.getToDoList());
         doneListView.setItems(dataModel.getDoneList());
         initializeListeners();
@@ -57,7 +46,6 @@ public class ToDoMenuController implements Initializable {
             @Override
             public void handle(DragEvent dragEvent) {
                 System.out.println("setOnDragDone");
-// This is not the ideal place to remove the player because the drag might not have been exited on the target.
             }
         });
 
@@ -100,16 +88,13 @@ public class ToDoMenuController implements Initializable {
         });
     }
 
-
     @FXML
     public void onPlusButtonClick(ActionEvent event) throws IOException {
         // """ opens addingToDo Scene """ //
         FXMLLoader loader = new FXMLLoader(getClass().getResource("addingToDo.fxml"));
-        root = loader.load();
+        Parent root = loader.load();
         com.example.todolist.AddingToDoController addingController = loader.getController();
-        System.out.println(addingController);
         addingController.setModel(dataModel);
-        addingController.setListView(toDoListView);
         Stage newStage = new Stage();
         newStage.setTitle("Adding to-do task");
         newStage.setScene(new Scene(root));

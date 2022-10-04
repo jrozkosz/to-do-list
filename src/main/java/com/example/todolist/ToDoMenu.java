@@ -13,9 +13,9 @@ import java.sql.SQLException;
 public class ToDoMenu extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(ToDoMenu.class.getResource("menu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(ToDoMenu.class.getResource("signIn.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 900, 700);
-        stage.setTitle("To-do list menu");
+        stage.setTitle("Sign In");
         stage.setScene(scene);
         stage.show();
     }
