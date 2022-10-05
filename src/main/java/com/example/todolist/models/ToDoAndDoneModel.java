@@ -35,15 +35,15 @@ public class ToDoAndDoneModel {
             PreparedStatement prepStatDone = connection.prepareStatement(
                     "select description, deadline from tasks_done where user_id = ?");
             prepStatDone.setInt(1, user.getUserId());
-            ResultSet rsDone = prepStatToDo.executeQuery();
+            ResultSet rsDone = prepStatDone.executeQuery();
             while (rsDone.next()) {
                 doneList.getMyList().add(new Task(
                         rsDone.getString("description"),
                         rsDone.getDate("deadline").toLocalDate()));
             }
-            afterLoadingData = true;
             FXCollections.sort(toDoList.getMyList());
             FXCollections.sort(doneList.getMyList());
+            afterLoadingData = true;
         } catch (Exception e) {
             System.out.println("Importing tasks from database failed");
             e.printStackTrace();
@@ -76,6 +76,7 @@ public class ToDoAndDoneModel {
                         if (afterLoadingData) {
                             if (change.wasRemoved()) {
                                 try {
+//                                    System.out.println("Removed: " + change.getRemoved());
                                     Task removedTask = change.getRemoved().get(0);
                                     PreparedStatement prepStatToDo;
                                     if(toDoTable) {
@@ -96,9 +97,8 @@ public class ToDoAndDoneModel {
                             }
                             if (change.wasAdded()) {
                                 try {
-                                    FXCollections.sort(getMyList());
                                     Task addedTask = change.getAddedSubList().get(0);
-                                    System.out.println(change.getAddedSubList());
+//                                    System.out.println("Added: " + change.getAddedSubList());
                                     PreparedStatement prepStatDone;
                                     if(toDoTable) {
                                         prepStatDone = connection.prepareStatement(
@@ -111,6 +111,7 @@ public class ToDoAndDoneModel {
                                     prepStatDone.setDate(2, Date.valueOf(addedTask.getDeadline()));
                                     prepStatDone.setInt(3, user.getUserId());
                                     prepStatDone.execute();
+                                    FXCollections.sort(getMyList());
                                 } catch (SQLException ex) {
                                     System.out.println("Adding task to db after change failed");
                                     throw new RuntimeException(ex);

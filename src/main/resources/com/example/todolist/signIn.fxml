@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -25,37 +26,42 @@
    <right>
       <AnchorPane prefHeight="700.0" prefWidth="467.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="208.0" fitWidth="323.0" layoutX="71.0" layoutY="94.0">
+            <ImageView fitHeight="208.0" fitWidth="323.0" layoutX="71.0" layoutY="82.0">
                <image>
                   <Image url="@padlock.png" />
                </image>
             </ImageView>
-            <Label layoutX="22.0" layoutY="377.0" text="Username" textFill="#99dbfc">
+            <Label layoutX="24.0" layoutY="378.0" text="Username" textFill="#99dbfc">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="25.0" layoutY="442.0" text="Password" textFill="#99dbfc">
+            <Label layoutX="27.0" layoutY="442.0" text="Password" textFill="#99dbfc">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="usernameTextField" layoutX="148.0" layoutY="369.0" prefHeight="41.0" prefWidth="291.0">
+            <TextField fx:id="usernameTextField" layoutX="148.0" layoutY="370.0" prefHeight="41.0" prefWidth="291.0">
                <font>
-                  <Font name="System Italic" size="13.0" />
+                  <Font name="System Italic" size="15.0" />
                </font>
             </TextField>
             <PasswordField fx:id="passwordField" layoutX="148.0" layoutY="434.0" prefHeight="41.0" prefWidth="291.0" />
-            <Button fx:id="signInButton" layoutX="148.0" layoutY="543.0" mnemonicParsing="false" onAction="#onSignInButtonClick" prefHeight="71.0" prefWidth="164.0" style="-fx-background-color: #99dbfc;" text="Sign In" textFill="#123456">
+            <Button fx:id="signInButton" layoutX="149.0" layoutY="537.0" mnemonicParsing="false" onAction="#onSignInButtonClick" prefHeight="71.0" prefWidth="164.0" style="-fx-background-color: #99dbfc;" text="Sign In" textFill="#123456">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Button>
-            <Label fx:id="errorText" alignment="CENTER" layoutX="22.0" layoutY="341.0" prefHeight="19.0" prefWidth="421.0" textFill="#e80202">
+            <Label fx:id="errorText" alignment="CENTER" layoutX="22.0" layoutY="331.0" prefHeight="19.0" prefWidth="421.0" textFill="#e80202">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
+            <Hyperlink fx:id="singUpLink" layoutX="78.0" layoutY="616.0" onAction="#onSignUpLinkClick" text="Don't have an account? Create a new one!">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Hyperlink>
          </children>
       </AnchorPane>
    </right>

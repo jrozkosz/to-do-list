@@ -13,22 +13,18 @@
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.todolist.ToDoMenuController">
   <columnConstraints>
+    <ColumnConstraints />
     <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints />
-    <RowConstraints maxHeight="86.0" minHeight="6.0" prefHeight="78.0" />
-      <RowConstraints maxHeight="567.0" minHeight="10.0" prefHeight="504.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="261.0" minHeight="10.0" prefHeight="118.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="39.0" minHeight="0.0" prefHeight="29.0" />
+      <RowConstraints maxHeight="86.0" minHeight="6.0" prefHeight="57.0" />
+      <RowConstraints maxHeight="567.0" minHeight="10.0" prefHeight="498.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="261.0" minHeight="10.0" prefHeight="116.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" text="Done:" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
-         <font>
-            <Font name="FreeMono Bold Oblique" size="20.0" />
-         </font>
-      </Label>
-      <GridPane prefHeight="79.0" prefWidth="264.0" GridPane.rowIndex="1">
+      <GridPane prefHeight="79.0" prefWidth="264.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="176.0" minWidth="10.0" prefWidth="143.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="60.0" />
@@ -42,24 +38,37 @@
                   <Font name="FreeMono Bold" size="20.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" onAction="#onPlusButtonClick" text="+" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+            <Button fx:id="plusButton" mnemonicParsing="false" onAction="#onPlusButtonClick" text="+" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
             </Button>
          </children>
       </GridPane>
-      <Button mnemonicParsing="false" prefHeight="57.0" prefWidth="216.0" text="KALENDARZ" GridPane.rowIndex="3">
+      <Button mnemonicParsing="false" prefHeight="57.0" prefWidth="216.0" text="KALENDARZ" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <font>
             <Font name="FreeMono Bold Oblique" size="25.0" />
          </font>
       </Button>
-      <ImageView fitHeight="74.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <ImageView fitHeight="74.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3">
          <image>
             <Image url="@chart_line.png" />
          </image>
       </ImageView>
-      <ListView fx:id="toDoListView" editable="true" fixedCellSize="35.0" opacity="0.8" prefHeight="504.0" prefWidth="360.0" GridPane.rowIndex="2" />
-      <ListView fx:id="doneListView" editable="true" fixedCellSize="35.0" opacity="0.8" prefHeight="504.0" prefWidth="360.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <ListView fx:id="toDoListView" editable="true" fixedCellSize="35.0" opacity="0.8" prefHeight="507.0" prefWidth="360.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <ListView fx:id="doneListView" editable="true" fixedCellSize="35.0" opacity="0.8" prefHeight="504.0" prefWidth="360.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <Label alignment="CENTER" contentDisplay="CENTER" text="Done:" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+         <font>
+            <Font name="FreeMono Bold Oblique" size="20.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="logOutButton" fitHeight="29.0" fitWidth="37.0" onMousePressed="#onLogOutButtonClick" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+         <GridPane.margin>
+            <Insets right="5.0" top="7.0" />
+         </GridPane.margin>
+         <image>
+            <Image url="@logout_icon.png" />
+         </image>
+      </ImageView>
    </children>
 </GridPane>

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.todolist.AddingToDoController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.todolist.AddingToDoController">
    <children>
       <Label cache="true" text="To-do task">
          <VBox.margin>
@@ -41,7 +41,7 @@
             <Insets bottom="20.0" top="2.0" />
          </VBox.margin>
       </DatePicker>
-      <Button fx:id="addButton" mnemonicParsing="false" onAction="#onAddButtonClick" prefHeight="30.0" prefWidth="68.0" text="Add!" />
+      <Button fx:id="addButton" mnemonicParsing="false" onAction="#onAddButtonClick" onKeyPressed="#onAddButtonClick" prefHeight="30.0" prefWidth="68.0" text="Add!" />
       <Label text="or press ENTER">
          <font>
             <Font size="9.0" />

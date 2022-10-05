@@ -3,11 +3,18 @@ package com.example.todolist;
 import com.example.todolist.models.ToDoAndDoneModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
-public class AddingToDoController {
+import java.awt.event.KeyEvent;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class AddingToDoController implements Initializable {
 
     @FXML
     private Button addButton;
@@ -20,13 +27,17 @@ public class AddingToDoController {
     @FXML
     private DatePicker chosenDeadline;
     private ToDoAndDoneModel dataModel;
-    private Stage stage;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        addButton.setCursor(Cursor.HAND);
+    }
     @FXML
     public void onAddButtonClick(ActionEvent event){
         if(!textInput.getText().equals("") && !(chosenDeadline.getValue() == null)) {
             System.out.println(textInput.getText());
             dataModel.addToDoTask(textInput.getText(), chosenDeadline.getValue());
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.hide();
         } else if (textInput.getText().equals("")) {
             textNotEmpty.setText("Text field cannot be empty!");
@@ -37,5 +48,4 @@ public class AddingToDoController {
     public void setModel(ToDoAndDoneModel model) {
         this.dataModel = model;
     }
-
 }

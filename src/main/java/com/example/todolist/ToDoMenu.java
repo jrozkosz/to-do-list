@@ -6,8 +6,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ToDoMenu extends Application {
@@ -15,7 +13,7 @@ public class ToDoMenu extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ToDoMenu.class.getResource("signIn.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 900, 700);
-        stage.setTitle("Sign In");
+        stage.setTitle("Sign in");
         stage.setScene(scene);
         stage.show();
     }

@@ -6,10 +6,13 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.BlendMode;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.stage.Stage;
 
@@ -22,6 +25,10 @@ public class ToDoMenuController {
     private ListView<Task> toDoListView;
     @FXML
     private ListView<Task> doneListView;
+    @FXML
+    private Button plusButton;
+    @FXML
+    private ImageView logOutButton;
     private ToDoAndDoneModel dataModel;
 
     public void displayAllTasks(ToDoAndDoneModel dataModel){
@@ -29,6 +36,10 @@ public class ToDoMenuController {
         toDoListView.setItems(dataModel.getToDoList());
         doneListView.setItems(dataModel.getDoneList());
         initializeListeners();
+
+        logOutButton.setCursor(Cursor.HAND);
+        plusButton.setCursor(Cursor.HAND);
+
     }
 
     private void initializeListeners() {
@@ -42,35 +53,31 @@ public class ToDoMenuController {
 
         AtomicBoolean isOverDoneList = new AtomicBoolean(false);
 
-        toDoListView.setOnDragDone(new EventHandler<DragEvent>() {
-            @Override
-            public void handle(DragEvent dragEvent) {
-                System.out.println("setOnDragDone");
-            }
-        });
+//        toDoListView.setOnDragDone(new EventHandler<DragEvent>() {
+//            @Override
+//            public void handle(DragEvent dragEvent) {
+//                System.out.println("setOnDragDone");
+//            }
+//        });
 
         doneListView.setOnDragEntered(new EventHandler<DragEvent>() {
             @Override
             public void handle(DragEvent dragEvent) {
-                System.out.println("setOnDragEntered");
                 doneListView.setBlendMode(BlendMode.DIFFERENCE);
             }
         });
 
         doneListView.setOnDragExited(dragEvent -> {
-            System.out.println("setOnDragExited");
             isOverDoneList.set(false);
             doneListView.setBlendMode(null);
         });
 
         doneListView.setOnDragOver(dragEvent -> {
-            System.out.println("setOnDragOver");
             isOverDoneList.set(true);
             dragEvent.acceptTransferModes(TransferMode.MOVE);
         });
 
         doneListView.setOnDragDropped(dragEvent -> {
-            System.out.println("setOnDragDropped");
             String stringTask = dragEvent.getDragboard().getString();
             String[] descAndDateString = stringTask.split(" -> ");
             doneListView.getItems().addAll(new Task(descAndDateString[0],
@@ -99,5 +106,15 @@ public class ToDoMenuController {
         newStage.setTitle("Adding to-do task");
         newStage.setScene(new Scene(root));
         newStage.show();
+    }
+
+    @FXML
+    public void onLogOutButtonClick(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("signIn.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Sign In");
+        stage.show();
     }
 }
