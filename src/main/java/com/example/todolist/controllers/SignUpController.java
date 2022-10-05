@@ -9,6 +9,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,6 +25,8 @@ public class SignUpController {
     private PasswordField passwordField;
     @FXML
     private Label errorText;
+    @FXML
+    private ImageView goBackToSignInButton;
 
     @FXML
     public void onSignUpButtonClick(ActionEvent event) throws IOException, SQLException {
@@ -47,5 +51,15 @@ public class SignUpController {
             alert.setContentText("Your account has been created successfully!");
             alert.show();
         }
+    }
+
+    @FXML
+    public void onGoBackButtonClick(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("signIn.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Sign In");
+        stage.show();
     }
 }

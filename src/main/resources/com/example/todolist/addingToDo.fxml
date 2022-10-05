@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.todolist.AddingToDoController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="400.0" style="-fx-background-color: #99dbfc;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.todolist.AddingToDoController">
    <children>
       <Label cache="true" text="To-do task">
          <VBox.margin>
@@ -22,10 +22,13 @@
          <font>
             <Font size="11.0" />
          </font>
+         <VBox.margin>
+            <Insets bottom="2.0" top="3.0" />
+         </VBox.margin>
       </Label>
       <TextArea fx:id="textInput" prefHeight="136.0" prefWidth="400.0" promptText="Type something..." wrapText="true">
          <VBox.margin>
-            <Insets bottom="5.0" left="50.0" right="50.0" top="5.0" />
+            <Insets bottom="5.0" left="50.0" right="50.0" />
          </VBox.margin>
          <font>
             <Font size="15.0" />
@@ -41,8 +44,11 @@
             <Insets bottom="20.0" top="2.0" />
          </VBox.margin>
       </DatePicker>
-      <Button fx:id="addButton" mnemonicParsing="false" onAction="#onAddButtonClick" onKeyPressed="#onAddButtonClick" prefHeight="30.0" prefWidth="68.0" text="Add!" />
-      <Label text="or press ENTER">
+      <Button fx:id="addButton" mnemonicParsing="false" onAction="#onAddButtonClick" onKeyPressed="#onAddButtonClick" prefHeight="30.0" prefWidth="68.0" style="-fx-background-color: #3d8ae1;" text="Add!">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font></Button>
+      <Label>
          <font>
             <Font size="9.0" />
          </font>

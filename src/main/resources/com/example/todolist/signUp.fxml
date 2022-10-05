@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -50,13 +51,24 @@
                     <font>
                         <Font name="System Bold" size="20.0" />
                     </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
                 </Button>
                 <Label fx:id="errorText" alignment="CENTER" layoutX="22.0" layoutY="331.0" prefHeight="19.0" prefWidth="421.0" textFill="#e80202">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Label>
+            <ImageView fx:id="goBackToSignInButton" fitHeight="42.0" fitWidth="44.0" layoutX="414.0" layoutY="8.0" onMousePressed="#onGoBackButtonClick" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@goback.png" />
+               </image>
+            </ImageView>
             </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
         </AnchorPane>
     </right>
 </BorderPane>

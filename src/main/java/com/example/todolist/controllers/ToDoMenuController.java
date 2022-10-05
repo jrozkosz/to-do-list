@@ -2,6 +2,7 @@ package com.example.todolist;
 
 import com.example.todolist.models.Task;
 import com.example.todolist.models.ToDoAndDoneModel;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -29,6 +30,8 @@ public class ToDoMenuController {
     private Button plusButton;
     @FXML
     private ImageView logOutButton;
+    @FXML
+    private ImageView wasteBinButton;
     private ToDoAndDoneModel dataModel;
 
     public void displayAllTasks(ToDoAndDoneModel dataModel){
@@ -36,30 +39,17 @@ public class ToDoMenuController {
         toDoListView.setItems(dataModel.getToDoList());
         doneListView.setItems(dataModel.getDoneList());
         initializeListeners();
-
-        logOutButton.setCursor(Cursor.HAND);
-        plusButton.setCursor(Cursor.HAND);
-
     }
 
     private void initializeListeners() {
         toDoListView.setOnDragDetected(event -> {
-            System.out.println("setOnDragDetected");
             Dragboard dragBoard = toDoListView.startDragAndDrop(TransferMode.MOVE);
             ClipboardContent content = new ClipboardContent();
             content.putString(toDoListView.getSelectionModel().getSelectedItem().toString());
             dragBoard.setContent(content);
         });
 
-        AtomicBoolean isOverDoneList = new AtomicBoolean(false);
-
-//        toDoListView.setOnDragDone(new EventHandler<DragEvent>() {
-//            @Override
-//            public void handle(DragEvent dragEvent) {
-//                System.out.println("setOnDragDone");
-//            }
-//        });
-
+        AtomicBoolean isOverDroppedToList = new AtomicBoolean(false);
         doneListView.setOnDragEntered(new EventHandler<DragEvent>() {
             @Override
             public void handle(DragEvent dragEvent) {
@@ -68,21 +58,21 @@ public class ToDoMenuController {
         });
 
         doneListView.setOnDragExited(dragEvent -> {
-            isOverDoneList.set(false);
+            isOverDroppedToList.set(false);
             doneListView.setBlendMode(null);
         });
 
         doneListView.setOnDragOver(dragEvent -> {
-            isOverDoneList.set(true);
+            isOverDroppedToList.set(true);
             dragEvent.acceptTransferModes(TransferMode.MOVE);
         });
 
         doneListView.setOnDragDropped(dragEvent -> {
-            String stringTask = dragEvent.getDragboard().getString();
-            String[] descAndDateString = stringTask.split(" -> ");
-            doneListView.getItems().addAll(new Task(descAndDateString[0],
-                    Date.valueOf(descAndDateString[1]).toLocalDate()));
-            if(isOverDoneList.get()){
+            if(isOverDroppedToList.get()){
+                String stringTask = dragEvent.getDragboard().getString();
+                String[] descAndDateString = stringTask.split(" -> ");
+                doneListView.getItems().addAll(new Task(descAndDateString[0],
+                        Date.valueOf(descAndDateString[1]).toLocalDate()));
                 for(Task task : dataModel.getToDoList()){
                     if(task.getDescription().equals(descAndDateString[0]) &&
                             task.getDeadline().toString().equals(descAndDateString[1])){
@@ -93,6 +83,16 @@ public class ToDoMenuController {
             }
             dragEvent.setDropCompleted(true);
         });
+    }
+
+    @FXML
+    public void onToDoListClick(MouseEvent event){
+        doneListView.getSelectionModel().clearSelection();
+    }
+
+    @FXML
+    public void onDoneListClick(MouseEvent event){
+        toDoListView.getSelectionModel().clearSelection();
     }
 
     @FXML
@@ -116,5 +116,14 @@ public class ToDoMenuController {
         stage.setScene(new Scene(root));
         stage.setTitle("Sign In");
         stage.show();
+    }
+
+    @FXML
+    public void onWasteBinButtonClick(MouseEvent event){
+        if(toDoListView.getSelectionModel().getSelectedItem() != null){
+            toDoListView.getItems().remove(toDoListView.getSelectionModel().getSelectedItem());
+        } else if (doneListView.getSelectionModel().getSelectedItem() != null) {
+            doneListView.getItems().remove(doneListView.getSelectionModel().getSelectedItem());
+        }
     }
 }
