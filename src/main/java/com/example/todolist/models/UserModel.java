@@ -8,7 +8,7 @@ public class UserModel {
     public UserModel() throws SQLException {
         try {
             connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/to_do_app", "root", "mysqlrozki01");
+                    "jdbc:mysql://localhost:3306/to_do_app", "root", "!Root2022");
         } catch (Exception e){
             System.out.println("Connection to database failed");
             e.printStackTrace();

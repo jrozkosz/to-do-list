@@ -17,7 +17,7 @@ public class ToDoAndDoneModel {
     public ToDoAndDoneModel(User user) throws SQLException {
         this.user = user;
         connection = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/to_do_app", "root", "mysqlrozki01");
+                "jdbc:mysql://localhost:3306/to_do_app", "root", "!Root2022");
         toDoList = new MyObservableList(connection,  true);
         doneList = new MyObservableList(connection, false);
 
