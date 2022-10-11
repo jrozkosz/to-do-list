@@ -1,5 +1,6 @@
 package com.example.todolist;
 
+import com.example.todolist.CalendarController;
 import com.example.todolist.models.Task;
 import com.example.todolist.models.ToDoAndDoneModel;
 import javafx.collections.ObservableList;
@@ -32,6 +33,8 @@ public class ToDoMenuController {
     private ImageView logOutButton;
     @FXML
     private ImageView wasteBinButton;
+    @FXML
+    private Button calendarButton;
     private ToDoAndDoneModel dataModel;
 
     public void displayAllTasks(ToDoAndDoneModel dataModel){
@@ -125,5 +128,17 @@ public class ToDoMenuController {
         } else if (doneListView.getSelectionModel().getSelectedItem() != null) {
             doneListView.getItems().remove(doneListView.getSelectionModel().getSelectedItem());
         }
+    }
+
+    @FXML
+    public void onCalendarButtonClick(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("calendar.fxml"));
+        Parent root = loader.load();
+        CalendarController controller = loader.getController();
+        controller.displayToDoTasks(dataModel);
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Calendar");
+        stage.show();
     }
 }

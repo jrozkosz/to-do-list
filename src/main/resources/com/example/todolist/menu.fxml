@@ -52,7 +52,7 @@
             </Button>
          </children>
       </GridPane>
-      <Button mnemonicParsing="false" prefHeight="57.0" prefWidth="216.0" style="-fx-background-color: #3d8ae1;" text="KALENDARZ" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <Button fx:id="calendarButton" mnemonicParsing="false" onAction="#onCalendarButtonClick" prefHeight="55.0" prefWidth="200.0" style="-fx-background-color: #3d8ae1;" text="CALENDAR" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <font>
             <Font name="FreeMono Bold Oblique" size="25.0" />
          </font>
