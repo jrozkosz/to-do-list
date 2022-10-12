@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
@@ -53,18 +54,21 @@ public class CalendarController {
         for(int row = 1; row < 7 && i <= cal.getActualMaximum(Calendar.DAY_OF_MONTH); row++){
             for(int col = 0; col < 7 && i <= cal.getActualMaximum(Calendar.DAY_OF_MONTH); col++){
                 if(row == 1 && col < firstDayOfMonth) { continue; }
+                float numOfTasksInOneDay = 0;
+                Label toDoTask = new Label();
+                currentToDoTasks.add(toDoTask);
+                toDoTask.setWrapText(true);
+                toDoTask.setTextAlignment(TextAlignment.CENTER);
+                toDoTask.setStyle("-fx-text-fill: navy");
+                GridPane.setHalignment(toDoTask, HPos.CENTER);
+                GridPane.setValignment(toDoTask, VPos.CENTER);
+                calendarTable.add(toDoTask, col, row);
                 for(Task task : dataModel.getToDoList()){
                     if( task.getDeadline().equals(LocalDate.parse(String.valueOf(year)+ "-" +
                             String.format("%02d" , monthNumber) + "-" + String.format("%02d" , i))) ){
-                        Label toDoTask = new Label(task.getDescription());
-                        currentToDoTasks.add(toDoTask);
-                        toDoTask.setWrapText(true);
-                        toDoTask.setTextAlignment(TextAlignment.CENTER);
-                        toDoTask.setStyle("-fx-text-fill: navy");
-                        GridPane.setHalignment(toDoTask, HPos.CENTER);
-                        GridPane.setValignment(toDoTask, VPos.CENTER);
-                        calendarTable.add(toDoTask, col, row);
-                        break;
+                        toDoTask.setText(toDoTask.getText() + "\n" + task.getDescription());
+                        toDoTask.setFont(new Font("System", 13-(numOfTasksInOneDay/1.5)));
+                        numOfTasksInOneDay++;
                     }
                 }
                 Label numOfDay = new Label(String.valueOf(i));

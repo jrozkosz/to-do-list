@@ -64,10 +64,13 @@
                <image>
                   <Image url="@goback.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
             </children>
          <cursor>
-            <Cursor fx:constant="HAND" />
+            <Cursor fx:constant="DEFAULT" />
          </cursor>
         </AnchorPane>
     </right>
