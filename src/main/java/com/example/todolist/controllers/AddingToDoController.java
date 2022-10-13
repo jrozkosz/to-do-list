@@ -35,7 +35,6 @@ public class AddingToDoController implements Initializable {
     @FXML
     public void onAddButtonClick(ActionEvent event){
         if(!textInput.getText().equals("") && !(chosenDeadline.getValue() == null)) {
-            System.out.println(textInput.getText());
             dataModel.addToDoTask(textInput.getText(), chosenDeadline.getValue());
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.hide();

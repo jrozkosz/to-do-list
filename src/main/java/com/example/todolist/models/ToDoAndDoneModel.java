@@ -76,7 +76,6 @@ public class ToDoAndDoneModel {
                         if (afterLoadingData) {
                             if (change.wasRemoved()) {
                                 try {
-//                                    System.out.println("Removed: " + change.getRemoved());
                                     Task removedTask = change.getRemoved().get(0);
                                     PreparedStatement prepStatToDo;
                                     if(toDoTable) {
@@ -98,7 +97,6 @@ public class ToDoAndDoneModel {
                             if (change.wasAdded()) {
                                 try {
                                     Task addedTask = change.getAddedSubList().get(0);
-//                                    System.out.println("Added: " + change.getAddedSubList());
                                     PreparedStatement prepStatDone;
                                     if(toDoTable) {
                                         prepStatDone = connection.prepareStatement(
