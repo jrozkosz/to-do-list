@@ -1,5 +1,6 @@
-package com.example.todolist;
+package com.example.todolist.controllers;
 ;
+import com.example.todolist.Main;
 import com.example.todolist.models.User;
 import com.example.todolist.models.UserModel;
 import javafx.event.ActionEvent;
@@ -41,7 +42,7 @@ public class SignUpController {
             errorText.setText("The password is already taken");
         } else {
             userModel.insertUser(usernameTextField.getText(), passwordField.getText());
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("signIn.fxml"));
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("signIn.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -55,7 +56,7 @@ public class SignUpController {
 
     @FXML
     public void onGoBackButtonClick(MouseEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("signIn.fxml"));
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("signIn.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));

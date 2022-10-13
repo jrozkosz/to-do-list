@@ -1,6 +1,6 @@
-package com.example.todolist;
+package com.example.todolist.controllers;
 
-import com.example.todolist.ToDoMenuController;
+import com.example.todolist.Main;
 import com.example.todolist.models.Task;
 import com.example.todolist.models.ToDoAndDoneModel;
 import javafx.fxml.FXML;
@@ -131,7 +131,7 @@ public class CalendarController {
 
     @FXML
     public void onGoBackButtonClick(MouseEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("menu.fxml"));
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("menu.fxml"));
         Parent root = loader.load();
         ToDoMenuController controller = loader.getController();
         controller.displayAllTasks(dataModel);

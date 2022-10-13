@@ -1,16 +1,11 @@
 module com.example.todolist {
     requires javafx.controls;
-//    requires javafx.swing;
     requires javafx.fxml;
-    requires javafx.web;
+//    requires javafx.web;
     requires java.sql;
 
-    requires org.controlsfx.controls;
-    requires net.synedra.validatorfx;
-    requires org.kordamp.ikonli.javafx;
-    requires org.kordamp.bootstrapfx.core;
-    requires eu.hansolo.tilesfx;
-
-    opens com.example.todolist to javafx.fxml;
+    opens com.example.todolist.controllers to javafx.fxml;
+//    opens com.example.todolist to javafx.fxml;
     exports com.example.todolist;
+    exports com.example.todolist.controllers;
 }

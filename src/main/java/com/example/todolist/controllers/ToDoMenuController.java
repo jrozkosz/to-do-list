@@ -1,6 +1,6 @@
-package com.example.todolist;
+package com.example.todolist.controllers;
 
-import com.example.todolist.CalendarController;
+import com.example.todolist.Main;
 import com.example.todolist.models.Task;
 import com.example.todolist.models.ToDoAndDoneModel;
 import javafx.event.ActionEvent;
@@ -99,9 +99,9 @@ public class ToDoMenuController {
     @FXML
     public void onPlusButtonClick(ActionEvent event) throws IOException {
         // """ opens addingToDo Scene """ //
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("addingToDo.fxml"));
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("addingToDo.fxml"));
         Parent root = loader.load();
-        com.example.todolist.AddingToDoController addingController = loader.getController();
+        AddingToDoController addingController = loader.getController();
         addingController.setModel(dataModel);
         Stage newStage = new Stage();
         newStage.setTitle("Adding to-do task");
@@ -111,7 +111,7 @@ public class ToDoMenuController {
 
     @FXML
     public void onLogOutButtonClick(MouseEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("signIn.fxml"));
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("signIn.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
@@ -130,7 +130,7 @@ public class ToDoMenuController {
 
     @FXML
     public void onCalendarButtonClick(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("calendar.fxml"));
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("calendar.fxml"));
         Parent root = loader.load();
         CalendarController controller = loader.getController();
         controller.displayToDoTasks(dataModel);

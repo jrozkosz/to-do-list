@@ -1,5 +1,6 @@
-package com.example.todolist;
+package com.example.todolist.controllers;
 
+import com.example.todolist.Main;
 import com.example.todolist.models.ToDoAndDoneModel;
 import com.example.todolist.models.User;
 import com.example.todolist.models.UserModel;
@@ -38,9 +39,10 @@ public class SignInController {
         } else if (user == null) {
             errorText.setText("There is no user like that in the system!");
         } else {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("menu.fxml"));
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("menu.fxml"));
+            loader.setClassLoader(getClass().getClassLoader());
             Parent root = loader.load();
-            com.example.todolist.ToDoMenuController controller = loader.getController();
+            ToDoMenuController controller = loader.getController();
             controller.displayAllTasks(new ToDoAndDoneModel(user));
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -51,7 +53,7 @@ public class SignInController {
     @FXML
     public void onSignUpLinkClick(ActionEvent event) throws IOException {
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("signUp.fxml"));
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("signUp.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));

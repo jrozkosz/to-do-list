@@ -1,4 +1,4 @@
-package com.example.todolist;
+package com.example.todolist.controllers;
 
 import com.example.todolist.models.ToDoAndDoneModel;
 import javafx.event.ActionEvent;
@@ -7,10 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
-import java.awt.event.KeyEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
