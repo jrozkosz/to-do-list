@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="ToDoList:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ToDoList_jar</output-path>
+    <root id="archive" name="ToDoList.jar">
+      <element id="module-output" name="ToDoList" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../JavaFiles_Libs/openjfx-19_linux-x64_bin-sdk/javafx-sdk-19/lib/javafx-swt.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../JavaFiles_Libs/openjfx-19_linux-x64_bin-sdk/javafx-sdk-19/lib/javafx.web.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../JavaFiles_Libs/openjfx-19_linux-x64_bin-sdk/javafx-sdk-19/lib/javafx.base.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../JavaFiles_Libs/openjfx-19_linux-x64_bin-sdk/javafx-sdk-19/lib/javafx.fxml.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../JavaFiles_Libs/openjfx-19_linux-x64_bin-sdk/javafx-sdk-19/lib/javafx.media.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../JavaFiles_Libs/openjfx-19_linux-x64_bin-sdk/javafx-sdk-19/lib/javafx.swing.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../JavaFiles_Libs/openjfx-19_linux-x64_bin-sdk/javafx-sdk-19/lib/javafx.controls.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../JavaFiles_Libs/openjfx-19_linux-x64_bin-sdk/javafx-sdk-19/lib/javafx.graphics.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../JavaFiles_Libs/mysql-connector-java-8.0.30/mysql-connector-java-8.0.30.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
