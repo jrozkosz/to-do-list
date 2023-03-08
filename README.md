@@ -1,5 +1,5 @@
 # to-do-list
-https://youtu.be/Qm1GJPpOkE0 - demonstration of app in action
+https://youtu.be/Qm1GJPpOkE0 - demonstration of the app in action
 
 to run the app on linux you need to have JavaFX SDK downloaded (19 the best), then
 download the repository and type in terminal:
