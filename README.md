@@ -3,6 +3,8 @@ The app allows the user to manage the tasks that they need to do.
 
 Features:
 
+*signing up and signing in
+
 *adding tasks with their deadlines to the 'to-do list'
 
 *dragging the tasks that that have been accomplished to the 'done list'
