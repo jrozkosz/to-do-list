@@ -1,19 +1,13 @@
 # to-do-list
 The app allows the user to manage the tasks that they need to do.
 
-Features:
-
-*signing up and signing in
-
-*adding tasks with their deadlines to the 'to-do list'
-
-*dragging the tasks that that have been accomplished to the 'done list'
-
-*automatic sorting of tasks by their deadlines
-
-*deleting tasks from the lists
-
-*opening calendar where are registered all the tasks from 'to-do list'
+Features: <br />
+*signing up and signing in <br />
+*adding tasks with their deadlines to the 'to-do list' <br />
+*dragging the tasks that that have been accomplished to the 'done list' <br />
+*automatic sorting of tasks by their deadlines <br />
+*deleting tasks from the lists <br />
+*opening calendar where are registered all the tasks from 'to-do list' <br />
 
 https://youtu.be/Qm1GJPpOkE0 - demonstration of the app in action
 
